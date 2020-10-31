@@ -63,7 +63,7 @@ class Debug extends Command
     protected function execute(InputInterface $input, OutputInterface $output)
     {
         $this->state->emulateAreaCode(
-            Area::AREA_FRONTEND,
+            Area::AREA_CRONTAB,
             function () {
             }
         );
