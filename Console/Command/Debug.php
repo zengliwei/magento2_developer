@@ -20,6 +20,7 @@ namespace Common\Developer\Console\Command;
 
 use Magento\Framework\App\Area;
 use Magento\Framework\App\State;
+use Magento\Framework\ObjectManagerInterface;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
@@ -32,18 +33,26 @@ use Symfony\Component\Console\Output\OutputInterface;
 class Debug extends Command
 {
     /**
+     * @var ObjectManagerInterface
+     */
+    private $objectManager;
+
+    /**
      * @var State
      */
     private $state;
 
     /**
-     * @param State       $state
-     * @param string|null $name
+     * @param ObjectManagerInterface $objectManager
+     * @param State                  $state
+     * @param string|null            $name
      */
     public function __construct(
+        ObjectManagerInterface $objectManager,
         State $state,
         string $name = null
     ) {
+        $this->objectManager = $objectManager;
         $this->state = $state;
         parent::__construct($name);
     }
