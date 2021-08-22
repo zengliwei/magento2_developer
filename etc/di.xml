@@ -21,6 +21,7 @@
         <arguments>
             <argument name="commands" xsi:type="array">
                 <item name="dev_debug" xsi:type="object">Common\Developer\Console\Command\Debug</item>
+                <item name="clean_quotes" xsi:type="object">Common\Developer\Console\Command\CleanQuotes</item>
             </argument>
         </arguments>
     </type>
