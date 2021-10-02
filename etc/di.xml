@@ -9,6 +9,7 @@
         <arguments>
             <argument name="commands" xsi:type="array">
                 <item name="dev_debug" xsi:type="object">CrazyCat\Developer\Console\Command\Debug</item>
+                <item name="clean_order" xsi:type="object">CrazyCat\Developer\Console\Command\CleanOrders</item>
                 <item name="clean_quotes" xsi:type="object">CrazyCat\Developer\Console\Command\CleanQuotes</item>
             </argument>
         </arguments>

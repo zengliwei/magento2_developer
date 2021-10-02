@@ -6,6 +6,7 @@
 
 namespace CrazyCat\Developer\Console\Command;
 
+use Exception;
 use Magento\Framework\App\ResourceConnection;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputInterface;
@@ -50,7 +51,7 @@ class CleanQuotes extends Command
                     self::OPT_CUSTOMER_ID,
                     'c',
                     InputOption::VALUE_OPTIONAL,
-                    'Customer ID'
+                    'Customer ID, separated by comma'
                 )
             ]
         );
@@ -62,14 +63,14 @@ class CleanQuotes extends Command
     protected function execute(InputInterface $input, OutputInterface $output)
     {
         $customerId = $input->getOption(self::OPT_CUSTOMER_ID);
-        $conn = $this->resource->getConnection();
+        $conn = $this->resource->getConnection('checkout');
 
         try {
             if ($customerId) {
                 $quoteIds = $conn->fetchCol(
                     $conn->select()
                         ->from($conn->getTableName('quote'), ['entity_id'])
-                        ->where('customer_id = ?', $customerId)
+                        ->where('customer_id IN (?)', explode(',', $customerId))
                 );
                 $quoteItemIds = $conn->fetchCol(
                     $conn->select()
@@ -102,7 +103,7 @@ class CleanQuotes extends Command
 
                 $output->writeln('<info>All quotes cleaned.</info>');
             }
-        } catch (\Exception $e) {
+        } catch (Exception $e) {
             $output->writeln('<error>' . $e->getMessage() . '</error>');
         }
     }
