@@ -13,7 +13,7 @@ See controller class `CrazyCat\Developer\Controller\Index\Csrf`.
 ### Clean quotes
 
 ```sh
-bin/magento dev:clean-quotes [options]
+php bin/magento dev:clean-quotes [options]
 ```
 
 |Option|Alias|Description|
@@ -23,7 +23,7 @@ bin/magento dev:clean-quotes [options]
 ### Clean orders
 
 ```sh
-bin/magento dev:clean-orders [options]
+php bin/magento dev:clean-orders [options]
 ```
 
 |Option|Alias|Description|
@@ -33,5 +33,5 @@ bin/magento dev:clean-orders [options]
 ### Place to do debug
 
 ```sh
-bin/magento dev:debug
+php bin/magento dev:debug
 ```
